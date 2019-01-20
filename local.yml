@@ -1,7 +1,7 @@
-# ansible-pull setup
 ---
-- hosts: all
-  remote_user: root
+- hosts: localhost
+  connection: local
+  gather_facts: yes
 
   vars:
     maintainers:
@@ -11,7 +11,7 @@
     - name: Add user "deploy" and set an unusable password
       user:
         name: deploy
-        password: '*'
+        password: "*"
         state: present
 
     - name: Add maintainers' ssh keys so they can log in as user deploy.
